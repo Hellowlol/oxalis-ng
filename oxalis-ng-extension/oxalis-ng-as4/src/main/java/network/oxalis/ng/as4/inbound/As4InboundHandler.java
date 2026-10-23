@@ -464,8 +464,8 @@ public class As4InboundHandler {
         try (SbdReader sbdReader = SbdReader.newInstance(is)) {
             return sbdReader.getHeader();
         } catch (SbdhException | IOException e) {
-            launderZipException(contentId, e);
             log.debug("Failed to read header for payload with Content-ID: {}", contentId, e);
+            launderZipException(contentId, e);
             throw new OxalisAs4Exception("Could not extract SBDH from payload");
         }
     }
